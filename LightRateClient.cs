@@ -146,7 +146,6 @@ namespace LightRateClient.Client
                 HttpMethod = httpMethod,
                 UserIdentifier = userIdentifier,
                 TokensRequested = tokensRequested,
-                TokensRequestedForDefaultBucketMatch = 1,
                 ApplicationId = _configuration.ApplicationId
             };
 
@@ -328,7 +327,7 @@ namespace LightRateClient.Client
                 errorMessage = $"HTTP {statusCode} Error";
             }
 
-            throw Errors.CreateErrorFromResponse(errorMessage, statusCode, responseBody);
+            throw global::LightRateClient.Errors.Errors.CreateErrorFromResponse(errorMessage, statusCode, responseBody);
         }
 
         private bool IsValidConsumeTokensRequest(ConsumeTokensRequest request)
